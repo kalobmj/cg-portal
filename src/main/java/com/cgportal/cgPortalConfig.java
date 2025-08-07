@@ -4,16 +4,14 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
-@ConfigGroup("example")
+@ConfigGroup("cgportal")
 public interface cgPortalConfig extends Config
 {
 	@ConfigItem(
-		keyName = "cg portal",
-		name = "highlight cg portal",
-		description = "Highlight the cg portal depending on what type of gauntlet mode you are about to enter"
+			position = 1,
+			keyName = "showWorldType",
+			name = "Show the current world type",
+			description = "Toggle the display of the current world type"
 	)
-	default String greeting()
-	{
-		return "Hello";
-	}
+	default boolean showWorldType() { return false; }
 }
