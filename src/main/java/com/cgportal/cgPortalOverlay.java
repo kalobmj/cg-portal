@@ -27,6 +27,17 @@ import net.runelite.api.ObjectComposition;
 // color for each gauntlet type (let players pick the colors, default red blue)
 // tick box - display color outline only on hover, or highlight entire time
 
+// ** use the gui java decompiler just downloaded to see source code from .jar file in plugins -> .runelite
+// reference the kill count viewer plugin (that new one u downloaded)
+// **
+
+// data to get:
+// boss kc (can use new kc plugin to help, but it updates slow and will need to improve it somehow)
+
+// need to:
+// find how menu entry swapper works (makes cg left clickable -> the "swap")
+// display kc in real time (find some way to up-date right after kill, if not possible, track if user beats the gauntlet, then add an artificial +1 to the kc, to act as a placeholder while user either leaves and can get data, or does another kc. We will grab in the background)
+
 class cgPortalOverlay extends Overlay
 {
     private final Client client;
@@ -63,6 +74,13 @@ class cgPortalOverlay extends Overlay
                 .left("Portal Id:")
                 .right(Integer.toString(client.getWorld()))
                 .build());
+
+        // Add a line on the overlay for boss kc
+        // need to find boss kc here -> api?
+        panelComponent.getChildren().add(LineComponent.builder()
+                        .left("Boss Kc:")
+                        .right(Integer.toString(client.getEnergy()))
+                        .build());
 
         // If showing world type, determine world type and add the extra line
         if (config.showWorldType())

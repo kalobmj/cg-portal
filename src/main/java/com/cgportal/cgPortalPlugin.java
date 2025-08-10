@@ -15,16 +15,21 @@ import net.runelite.api.TileFunction;
 // portal ID: 37340
 // to display in infobox:
 // portal id
-// portal type (which gauntlet will you enter if you left click)
+// portal type (which gauntlet will you enter if you left-click)
 
 // options in plugins:
 // color for each gauntlet type (let players pick the colors, default red blue)
 // tick box - display color outline only on hover, or highlight entire time
 
+// 2 ideas:
+// make blue or red portal left click (similar to menu entry swap)
+// have gauntlet icon and kill count hovering in / middle of portal (similar to new boss killcount plugin) -> have toggle for either kc, can choose to display one or the other
+
+
 @PluginDescriptor(
 		name = "Gauntlet Portal",
-		description = "Highlights the Gauntlet portal to show which version you are about to enter",
-		tags = {"gauntlet", "portal", "corrupted", "highlight"}
+		description = "Highlights portal and swaps Corrupted Gauntlet to left click",
+		tags = {"gauntlet", "portal", "corrupted", "highlight", "swap"}
 )
 public class cgPortalPlugin extends Plugin
 {
