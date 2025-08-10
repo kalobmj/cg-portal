@@ -13,6 +13,20 @@ import net.runelite.client.ui.overlay.components.PanelComponent;
 import net.runelite.client.ui.overlay.components.TitleComponent;
 import net.runelite.client.ui.overlay.components.LineComponent;
 
+import net.runelite.api.gameval.ObjectID;
+import net.runelite.api.ObjectComposition;
+
+// api object composition
+
+// portal ID: 37340
+// to display in infobox:
+// portal id
+// portal type (which gauntlet will you enter if you left click)
+
+// options in plugins:
+// color for each gauntlet type (let players pick the colors, default red blue)
+// tick box - display color outline only on hover, or highlight entire time
+
 class cgPortalOverlay extends Overlay
 {
     private final Client client;
@@ -31,12 +45,12 @@ class cgPortalOverlay extends Overlay
     public Dimension render(Graphics2D graphics)
     {
         panelComponent.getChildren().clear();
-        String overlayTitle = "Current World:";
+        String overlayTitle = "Gaunlet Portal Infobox";
 
         // Build overlay title
         panelComponent.getChildren().add(TitleComponent.builder()
                 .text(overlayTitle)
-                .color(Color.GREEN)
+                .color(Color.CYAN)
                 .build());
 
         // Set the size of the overlay (width)
@@ -46,7 +60,7 @@ class cgPortalOverlay extends Overlay
 
         // Add a line on the overlay for world number
         panelComponent.getChildren().add(LineComponent.builder()
-                .left("Number:")
+                .left("Portal Id:")
                 .right(Integer.toString(client.getWorld()))
                 .build());
 
