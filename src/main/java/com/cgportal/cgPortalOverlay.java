@@ -106,6 +106,12 @@ class cgPortalOverlay extends Overlay
         // Add a line on the overlay to test getting the gauntlet portal's name based off calling the object using .getName()
         panelComponent.getChildren().add(LineComponent.builder()
                 .left("gauntlet portal name:")
+                .right(portal.getImpostor().getName())
+                .build());
+
+        // Add a line on the overlay to test getting the gauntlet portal's name based off calling the object using .getName()
+        panelComponent.getChildren().add(LineComponent.builder()
+                .left("gauntlet portal name:")
                 .right(portal.getName())
                 .build());
 
@@ -127,7 +133,15 @@ class cgPortalOverlay extends Overlay
         // public static final int GAUNTLET_ENTRANCE_HM_DISABLED = 36083;
         // public static final int GAUNTLET_ENTRANCE_HM_ENABLED = 36084;
 
+        ObjectComposition gauntletEntranceDisabled = client.getObjectDefinition(36083);
+        ObjectComposition gauntletEntranceEnabled = client.getObjectDefinition(36084);
 
+        log.info("gauntlet entrance disabled: " + gauntletEntranceDisabled.getName());
+        log.info("gauntlet entrance enabled: " + gauntletEntranceEnabled.getName());
+
+        // above
+        // gauntlet entrance disabled: The Gauntlet
+        // gauntlet entrance enabled: The Gauntlet
 
         // If showing world type, determine world type and add the extra line
         if (config.showWorldType())
