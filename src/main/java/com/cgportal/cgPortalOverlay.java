@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.util.EnumSet;
 import javax.inject.Inject;
+
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.WorldType;
 import net.runelite.client.ui.overlay.Overlay;
@@ -38,11 +40,13 @@ import net.runelite.api.ObjectComposition;
 // find how menu entry swapper works (makes cg left clickable -> the "swap")
 // display kc in real time (find some way to up-date right after kill, if not possible, track if user beats the gauntlet, then add an artificial +1 to the kc, to act as a placeholder while user either leaves and can get data, or does another kc. We will grab in the background)
 
+@Slf4j
 class cgPortalOverlay extends Overlay
 {
     private final Client client;
     private final cgPortalConfig config;
     private final PanelComponent panelComponent = new PanelComponent();
+
 
     @Inject
     private cgPortalOverlay(Client client, cgPortalConfig config)
@@ -81,6 +85,49 @@ class cgPortalOverlay extends Overlay
                         .left("Boss Kc:")
                         .right(Integer.toString(client.getEnergy()))
                         .build());
+
+        // Add a line on the overlay to test getting total level by calling client.getTotalLevel()
+        panelComponent.getChildren().add(LineComponent.builder()
+                .left("Total Level:")
+                .right(Integer.toString(client.getTotalLevel()))
+                .build());
+
+        ObjectComposition portal = client.getObjectDefinition(ObjectID.GAUNTLET_ENTRANCE);
+
+        // int getId();
+        // string getName();
+
+        // Add a line on the overlay to test getting the gauntlet portal's ID based off calling the object using .getId()
+        panelComponent.getChildren().add(LineComponent.builder()
+                .left("gauntlet portal id:")
+                .right(Integer.toString(portal.getId()))
+                .build());
+
+        // Add a line on the overlay to test getting the gauntlet portal's name based off calling the object using .getName()
+        panelComponent.getChildren().add(LineComponent.builder()
+                .left("gauntlet portal name:")
+                .right(portal.getName())
+                .build());
+
+        // log portal Id
+        log.info(Integer.toString(portal.getId()));
+
+        // test to get imposters name ? -> works -> The Gauntlet
+        log.info("Portal Imposter .getName()" + portal.getImpostor().getName());
+
+        // get gauntlet portal impostor Ids and loop through them
+        int[] portalIds = portal.getImpostorIds();
+        for (int Ids : portalIds) {
+
+            log.info("Portal Id: " + Ids);
+
+        }
+
+        // log above printed 36083, 36084
+        // public static final int GAUNTLET_ENTRANCE_HM_DISABLED = 36083;
+        // public static final int GAUNTLET_ENTRANCE_HM_ENABLED = 36084;
+
+
 
         // If showing world type, determine world type and add the extra line
         if (config.showWorldType())
