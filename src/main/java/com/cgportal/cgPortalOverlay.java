@@ -129,9 +129,31 @@ class cgPortalOverlay extends Overlay
 
         }
 
+        // Add a line on the overlay to getSizeX();
+        panelComponent.getChildren().add(LineComponent.builder()
+                .left("Size X")
+                .right(Integer.toString(portal.getSizeX()))
+                        .build());
+
+        // Add a line on the overlay to getSizeY();
+        panelComponent.getChildren().add(LineComponent.builder()
+                .left("Size X")
+                .right(Integer.toString(portal.getSizeY()))
+                .build());
+
+        String[] portalActions = portal.getActions();
+        for (String actions : portalActions)
+        {
+
+            log.info("Portal action: " + actions);
+
+        }
+
         // log above printed 36083, 36084
         // public static final int GAUNTLET_ENTRANCE_HM_DISABLED = 36083;
         // public static final int GAUNTLET_ENTRANCE_HM_ENABLED = 36084;
+
+
 
         ObjectComposition gauntletEntranceDisabled = client.getObjectDefinition(36083);
         ObjectComposition gauntletEntranceEnabled = client.getObjectDefinition(36084);
@@ -139,9 +161,66 @@ class cgPortalOverlay extends Overlay
         log.info("gauntlet entrance disabled: " + gauntletEntranceDisabled.getName());
         log.info("gauntlet entrance enabled: " + gauntletEntranceEnabled.getName());
 
+        // testing .getActions() -> String[] arr of strings ?
+        log.info("Main portal Action: 0: " + portal.getActions()[0]);
+        log.info("Main portal Action: 1: " + portal.getActions()[1]);
+        log.info("Main portal Action: 2: " + portal.getActions()[2]);
+        log.info("Main portal Action: 3: " + portal.getActions()[3]);
+        log.info("Main portal Action: 4: " + portal.getActions()[4]);
+
+        // testing .getActions() -> String[] arr of strings ?
+        log.info("gauntletEnabled Action 0: " + gauntletEntranceEnabled.getActions()[0]);
+        log.info("gauntletEnabled Action 1: " + gauntletEntranceEnabled.getActions()[1]);
+        log.info("gauntletEnabled Action 2: " + gauntletEntranceEnabled.getActions()[2]);
+        log.info("gauntletEnabled Action 3: " + gauntletEntranceEnabled.getActions()[3]);
+        log.info("gauntletEnabled Action 4: " + gauntletEntranceEnabled.getActions()[4]);
+
+        // testing .getActions() -> String[] arr of strings ?
+        log.info("gauntletDisabled Action 0: " + gauntletEntranceDisabled.getActions()[0]);
+        log.info("gauntletDisabled Action 1: " + gauntletEntranceDisabled.getActions()[1]);
+        log.info("gauntletDisabled Action 2: " + gauntletEntranceDisabled.getActions()[2]);
+        log.info("gauntletDisabled Action 3: " + gauntletEntranceDisabled.getActions()[3]);
+        log.info("gauntletDisabled Action 4: " + gauntletEntranceDisabled.getActions()[4]);
+
+        // alt + j to select all occurrences of a word to delete
+        // Main portal Action: 0: null
+        // Main portal Action: 1: null
+        // Main portal Action: 2: null
+        // Main portal Action: 3: null
+        // Main portal Action: 4: null
+        // gauntletEnabled Action 0: Enter
+        // gauntletEnabled Action 1: Enter-corrupted
+        // gauntletEnabled Action 2: null
+        // gauntletEnabled Action 3: null
+        // gauntletEnabled Action 4: null
+        // gauntletDisabled Action 0: Enter
+        // gauntletDisabled Action 1: null
+        // gauntletDisabled Action 2: null
+        // gauntletDisabled Action 3: null
+        // gauntletDisabled Action 4: null
+
         // above
         // gauntlet entrance disabled: The Gauntlet
         // gauntlet entrance enabled: The Gauntlet
+
+        // varbit
+        log.info("main portal getvarbitId: " + portal.getVarbitId());
+        log.info("gauntlet enabled getvarbitId: " + gauntletEntranceEnabled.getVarbitId());
+        log.info("gauntlet disabled getVarbitId: " + gauntletEntranceDisabled.getVarbitId());
+
+        // varPlayer
+        log.info("main portal getVarPlayerId: " + portal.getVarPlayerId());
+        log.info("gauntlet enabled getVarPlayerId: " + gauntletEntranceEnabled.getVarPlayerId());
+        log.info("gauntlet disabled getVarPlayerId: " + gauntletEntranceDisabled.getVarPlayerId());
+
+        // main portal getvarbitId: -1
+        // gauntlet enabled getvarbitId: -1
+        // gauntlet disabled getVarbitId: -1
+        // main portal getVarPlayerId: 2353
+        // gauntlet enabled getVarPlayerId: -1
+        // gauntlet disabled getVarPLayerId: -1
+
+        // above varPlayerID main portal -> public static final int TOTAL_COMPLETED_GAUNTLET = 2353;
 
         // If showing world type, determine world type and add the extra line
         if (config.showWorldType())
