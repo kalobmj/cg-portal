@@ -162,25 +162,25 @@ class cgPortalOverlay extends Overlay
         log.info("gauntlet entrance enabled: " + gauntletEntranceEnabled.getName());
 
         // testing .getActions() -> String[] arr of strings ?
-        log.info("Main portal Action: 0: " + portal.getActions()[0]);
-        log.info("Main portal Action: 1: " + portal.getActions()[1]);
-        log.info("Main portal Action: 2: " + portal.getActions()[2]);
-        log.info("Main portal Action: 3: " + portal.getActions()[3]);
-        log.info("Main portal Action: 4: " + portal.getActions()[4]);
+//        log.info("Main portal Action: 0: " + portal.getActions()[0]);
+//        log.info("Main portal Action: 1: " + portal.getActions()[1]);
+//        log.info("Main portal Action: 2: " + portal.getActions()[2]);
+//        log.info("Main portal Action: 3: " + portal.getActions()[3]);
+//        log.info("Main portal Action: 4: " + portal.getActions()[4]);
 
         // testing .getActions() -> String[] arr of strings ?
-        log.info("gauntletEnabled Action 0: " + gauntletEntranceEnabled.getActions()[0]);
-        log.info("gauntletEnabled Action 1: " + gauntletEntranceEnabled.getActions()[1]);
-        log.info("gauntletEnabled Action 2: " + gauntletEntranceEnabled.getActions()[2]);
-        log.info("gauntletEnabled Action 3: " + gauntletEntranceEnabled.getActions()[3]);
-        log.info("gauntletEnabled Action 4: " + gauntletEntranceEnabled.getActions()[4]);
+//        log.info("gauntletEnabled Action 0: " + gauntletEntranceEnabled.getActions()[0]);
+//        log.info("gauntletEnabled Action 1: " + gauntletEntranceEnabled.getActions()[1]);
+//        log.info("gauntletEnabled Action 2: " + gauntletEntranceEnabled.getActions()[2]);
+//        log.info("gauntletEnabled Action 3: " + gauntletEntranceEnabled.getActions()[3]);
+//        log.info("gauntletEnabled Action 4: " + gauntletEntranceEnabled.getActions()[4]);
 
         // testing .getActions() -> String[] arr of strings ?
-        log.info("gauntletDisabled Action 0: " + gauntletEntranceDisabled.getActions()[0]);
-        log.info("gauntletDisabled Action 1: " + gauntletEntranceDisabled.getActions()[1]);
-        log.info("gauntletDisabled Action 2: " + gauntletEntranceDisabled.getActions()[2]);
-        log.info("gauntletDisabled Action 3: " + gauntletEntranceDisabled.getActions()[3]);
-        log.info("gauntletDisabled Action 4: " + gauntletEntranceDisabled.getActions()[4]);
+//        log.info("gauntletDisabled Action 0: " + gauntletEntranceDisabled.getActions()[0]);
+//        log.info("gauntletDisabled Action 1: " + gauntletEntranceDisabled.getActions()[1]);
+//        log.info("gauntletDisabled Action 2: " + gauntletEntranceDisabled.getActions()[2]);
+//        log.info("gauntletDisabled Action 3: " + gauntletEntranceDisabled.getActions()[3]);
+//        log.info("gauntletDisabled Action 4: " + gauntletEntranceDisabled.getActions()[4]);
 
         // alt + j to select all occurrences of a word to delete
         // Main portal Action: 0: null
@@ -204,14 +204,14 @@ class cgPortalOverlay extends Overlay
         // gauntlet entrance enabled: The Gauntlet
 
         // varbit
-        log.info("main portal getvarbitId: " + portal.getVarbitId());
-        log.info("gauntlet enabled getvarbitId: " + gauntletEntranceEnabled.getVarbitId());
-        log.info("gauntlet disabled getVarbitId: " + gauntletEntranceDisabled.getVarbitId());
+//        log.info("main portal getvarbitId: " + portal.getVarbitId());
+//        log.info("gauntlet enabled getvarbitId: " + gauntletEntranceEnabled.getVarbitId());
+//        log.info("gauntlet disabled getVarbitId: " + gauntletEntranceDisabled.getVarbitId());
 
         // varPlayer
-        log.info("main portal getVarPlayerId: " + portal.getVarPlayerId());
-        log.info("gauntlet enabled getVarPlayerId: " + gauntletEntranceEnabled.getVarPlayerId());
-        log.info("gauntlet disabled getVarPlayerId: " + gauntletEntranceDisabled.getVarPlayerId());
+//        log.info("main portal getVarPlayerId: " + portal.getVarPlayerId());
+//        log.info("gauntlet enabled getVarPlayerId: " + gauntletEntranceEnabled.getVarPlayerId());
+//        log.info("gauntlet disabled getVarPlayerId: " + gauntletEntranceDisabled.getVarPlayerId());
 
         // main portal getvarbitId: -1
         // gauntlet enabled getvarbitId: -1
@@ -221,6 +221,34 @@ class cgPortalOverlay extends Overlay
         // gauntlet disabled getVarPLayerId: -1
 
         // above varPlayerID main portal -> public static final int TOTAL_COMPLETED_GAUNTLET = 2353;
+
+        /**
+         * The plane level of the Tile, also referred as z-axis coordinate.
+         */
+        // private final int plane;
+
+        // objectSpawned
+        // objectDespawned
+
+        // outline -> .getConvexHull() ?
+
+        // drawing graphics possibly ? -> from AbyssOverlay
+        // Point mousePosition = client.getMouseCanvasPosition();
+        // Shape objectClickbox = object.getClickbox();
+
+        // if statement basically saying if mouse is over abyss rift -> outline rift in magenta if not a lighter color
+//        if (objectClickbox.contains(mousePosition.getX(), mousePosition.getY()))
+//        {
+//            graphics.setColor(Color.MAGENTA.darker());
+//        }
+//            else
+//        {
+//            graphics.setColor(Color.MAGENTA);
+//        }
+
+        // found this within developer tools: decorations ? -> maybe only for walls?
+        // public static final int ABYSS_EXIT_TO_EARTH = 24972;
+        // public static final int GAUNTLET_ENTRANCE = 37340; -> ObjectID1;
 
         // If showing world type, determine world type and add the extra line
         if (config.showWorldType())
