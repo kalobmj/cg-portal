@@ -7,8 +7,7 @@ import java.util.EnumSet;
 import javax.inject.Inject;
 
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Client;
-import net.runelite.api.WorldType;
+import net.runelite.api.*;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.components.PanelComponent;
@@ -16,7 +15,8 @@ import net.runelite.client.ui.overlay.components.TitleComponent;
 import net.runelite.client.ui.overlay.components.LineComponent;
 
 import net.runelite.api.gameval.ObjectID;
-import net.runelite.api.ObjectComposition;
+
+import static net.runelite.api.Skill.AGILITY;
 
 // api object composition
 
@@ -93,6 +93,8 @@ class cgPortalOverlay extends Overlay
                 .build());
 
         ObjectComposition portal = client.getObjectDefinition(ObjectID.GAUNTLET_ENTRANCE);
+
+//        TileObject portal2 =
 
         // int getId();
         // string getName();
@@ -234,6 +236,8 @@ class cgPortalOverlay extends Overlay
 
         // drawing graphics possibly ? -> from AbyssOverlay
         // Point mousePosition = client.getMouseCanvasPosition();
+
+        //  Calculate the on-screen clickable area of the object.
         // Shape objectClickbox = object.getClickbox();
 
         // if statement basically saying if mouse is over abyss rift -> outline rift in magenta if not a lighter color
@@ -249,6 +253,54 @@ class cgPortalOverlay extends Overlay
         // found this within developer tools: decorations ? -> maybe only for walls?
         // public static final int ABYSS_EXIT_TO_EARTH = 24972;
         // public static final int GAUNTLET_ENTRANCE = 37340; -> ObjectID1;
+
+//        Nightfirecat — 7/23/2025 12:14 PM
+//        It looks like you never clear totem objects on map load
+//        so you're probably using stale (invalid) object references
+//        Guru — 7/23/2025 12:15 PM
+//        Guru — 7/23/2025 12:15 PM
+//        I assumed I only need to use Spawn & Despawn events
+//        Nightfirecat — 7/23/2025 12:16 PM
+//        despawn events fire only for objects despawning without map loads. You should also clear all held object references when the gamestate changes to LOADING
+//        Guru — 7/23/2025 12:17 PM
+//        I see, I just saw that in the agility plugin too, thanks I'll give that a go
+
+        // example of above, clearing out objects -> most plugins just remove overlay
+//        @Override
+//        protected void startUp() throws Exception
+//        {
+//            overlayManager.add(agilityOverlay);
+//            overlayManager.add(lapCounterOverlay);
+//            agilityLevel = client.getBoostedSkillLevel(AGILITY);
+//        }
+//
+//        @Override
+//        protected void shutDown() throws Exception
+//        {
+//            overlayManager.remove(agilityOverlay);
+//            overlayManager.remove(lapCounterOverlay);
+//            marksOfGrace.clear();
+//            obstacles.clear();
+//            session = null;
+//            agilityLevel = 0;
+//            stickTile = null;
+//            npcs.clear();
+//        }
+
+        // Adam — 7/25/2024 5:14 PM
+        //you can already remove ground objects via tile.setGroundObject
+
+//        Package net.runelite.api
+//        Interface TileObject
+//
+//        All Known Subinterfaces:
+//        DecorativeObject, GameObject, GroundObject, ItemLayer, WallObject
+
+        // possible interfaces of TileObject we can use
+        // WallObject
+        // GroundObject
+
+        // what you are looking for might be in Client, look through it
 
         // If showing world type, determine world type and add the extra line
         if (config.showWorldType())
