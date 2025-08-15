@@ -16,7 +16,7 @@ import net.runelite.client.ui.overlay.components.LineComponent;
 
 import net.runelite.api.gameval.ObjectID;
 
-import static net.runelite.api.Skill.AGILITY;
+import static net.runelite.api.Skill.*;
 
 // api object composition
 
@@ -301,6 +301,30 @@ class cgPortalOverlay extends Overlay
         // GroundObject
 
         // what you are looking for might be in Client, look through it
+
+        // ## testing client calls
+        int fletching = client.getRealSkillLevel(FLETCHING);
+        int slayer = client.getRealSkillLevel(SLAYER);
+
+//        log.info(Integer.toString(fletching));
+//        log.info(Integer.toString(slayer));
+//
+//        log.debug(Integer.toString(fletching));
+//        log.debug(Integer.toString(slayer));
+
+        // Add a line on overlay to test get fletching level
+        panelComponent.getChildren().add(LineComponent.builder()
+                .left("Fletching Level")
+                .right(Integer.toString(fletching))
+                .build());
+
+        // Add a line on overlay to test get slayer level
+        panelComponent.getChildren().add(LineComponent.builder()
+                .left("Slayer Level")
+                .right(Integer.toString(slayer))
+                .build());
+
+
 
         // If showing world type, determine world type and add the extra line
         if (config.showWorldType())
