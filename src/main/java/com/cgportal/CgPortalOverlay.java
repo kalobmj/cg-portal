@@ -20,6 +20,19 @@ import static net.runelite.api.Skill.*;
 
 // api object composition
 
+// *** ## what we want 8/29 ***
+
+// portal highlighted
+// portal can be filled in
+// killcount and icon inside of portal floating (can move up and down)
+// can change from red to blue for color
+// walls color changed
+// chest color and outline based on if you have loot (try to see if you can tell if its good or bad loot)
+
+// guantlet room colors: oops, just get them from dev tools
+
+// *** ## what we want 8/29 ***
+
 // portal ID: 37340
 // to display in infobox:
 // portal id
@@ -41,15 +54,15 @@ import static net.runelite.api.Skill.*;
 // display kc in real time (find some way to up-date right after kill, if not possible, track if user beats the gauntlet, then add an artificial +1 to the kc, to act as a placeholder while user either leaves and can get data, or does another kc. We will grab in the background)
 
 @Slf4j
-class cgPortalOverlay extends Overlay
+class CgPortalOverlay extends Overlay
 {
     private final Client client;
-    private final cgPortalConfig config;
+    private final CgPortalConfig config;
     private final PanelComponent panelComponent = new PanelComponent();
 
 
     @Inject
-    private cgPortalOverlay(Client client, cgPortalConfig config)
+    private CgPortalOverlay(Client client, CgPortalConfig config)
     {
         setPosition(OverlayPosition.ABOVE_CHATBOX_RIGHT);
         this.client = client;

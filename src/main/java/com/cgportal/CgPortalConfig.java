@@ -7,7 +7,7 @@ import net.runelite.client.config.ConfigItem;
 import java.awt.Color;
 
 @ConfigGroup("cgportal")
-public interface cgPortalConfig extends Config
+public interface CgPortalConfig extends Config
 {
 
 	@ConfigItem(

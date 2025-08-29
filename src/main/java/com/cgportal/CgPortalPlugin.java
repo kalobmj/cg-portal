@@ -35,21 +35,21 @@ import net.runelite.api.TileFunction;
 		description = "Highlights portal and swaps left click on portal to Corrupted Gauntlet",
 		tags = {"gauntlet", "portal", "corrupted", "highlight", "swap"}
 )
-public class cgPortalPlugin extends Plugin
+public class CgPortalPlugin extends Plugin
 {
 	@Inject
 	private OverlayManager overlayManager;
 
 	@Inject
-	private cgPortalOverlay overlay;
+	private CgPortalOverlay overlay;
 
 	@Inject
-	private cgPortalConfig config;
+	private CgPortalConfig config;
 
 	@Provides
-	cgPortalConfig provideConfig(ConfigManager configManager)
+    CgPortalConfig provideConfig(ConfigManager configManager)
 	{
-		return configManager.getConfig(cgPortalConfig.class);
+		return configManager.getConfig(CgPortalConfig.class);
 	}
 
 	@Override
