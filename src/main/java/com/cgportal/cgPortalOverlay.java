@@ -1,13 +1,12 @@
 package com.cgportal;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.util.EnumSet;
 import javax.inject.Inject;
 
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.*;
+import net.runelite.api.coords.WorldPoint;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.components.PanelComponent;
@@ -15,6 +14,8 @@ import net.runelite.client.ui.overlay.components.TitleComponent;
 import net.runelite.client.ui.overlay.components.LineComponent;
 
 import net.runelite.api.gameval.ObjectID;
+
+import net.runelite.api.GameObject;
 
 import static net.runelite.api.Skill.*;
 
@@ -60,7 +61,7 @@ class cgPortalOverlay extends Overlay
     public Dimension render(Graphics2D graphics)
     {
         panelComponent.getChildren().clear();
-        String overlayTitle = "Gaunlet Portal Infobox";
+        String overlayTitle = "Gauntlet Portal Infobox";
 
         // Build overlay title
         panelComponent.getChildren().add(TitleComponent.builder()
@@ -324,7 +325,31 @@ class cgPortalOverlay extends Overlay
                 .right(Integer.toString(slayer))
                 .build());
 
+        /**
+         * The players location on the last game tick.
+         */
+//        private WorldPoint lastPlayerLocation;
 
+        // ## GameObject section:
+
+        ObjectComposition portalGameObject = client.getObjectDefinition(37340);
+
+//        Shape portalConvexHull = portalGameObject.getConvexHull();
+
+        // ## look over these
+        // net.runelite.client.ui.overlay;
+        // net.runelite.client.ui
+
+        // public static void renderTileOverlay(Graphics2D graphics, TileObject tileObject, String text, Color color)
+
+        // copied from discord:
+        // RuneLite Shell
+        // Scene scene = client.getScene();
+        // Tile[][][] tiles = scene.getTiles();
+        // Tile tile1 = tiles[0][49][49]; // colored grass
+        // Tile tile2 = tiles[0][50][49]; // normal grass
+
+        // tile1.setGroundObject(tile2.getGroundObject());
 
         // If showing world type, determine world type and add the extra line
         if (config.showWorldType())

@@ -10,6 +10,12 @@ import java.awt.Color;
 public interface cgPortalConfig extends Config
 {
 
+//	public interface TotemFletchingConfig extends Config {
+//
+//		Color RED = Color.decode("#E45F5F");
+//		Color GREEN = Color.decode("#9CF575");
+//		Color DEFAULT_TEXT_COLOR = Color.decode("#ddc2ff");
+
 	@ConfigItem(
 			position = -1,
 			keyName = "test0position",
