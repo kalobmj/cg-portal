@@ -32,6 +32,17 @@ import static net.runelite.api.Skill.*;
 
 // guantlet room colors: oops, just get them from dev tools
 
+// object item ids around room
+// 37341,36105,36096,36086
+
+// color outside portal too
+
+// hull and clickbox are the exact same
+
+// blue color hex: #C800FFFF
+// red color hex: #a52215
+// light-red color hex: #9b2011
+
 // *** ## what we want 8/29 ***
 
 // portal ID: 37340
